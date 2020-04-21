@@ -9,14 +9,14 @@ pipeline {
         stage("Build and Publish") {
             steps {
                 sh "cd  samples/bookinfo"
+                sh "pwd"
+                sh "ls"
                 sh "./build_push_update_images.sh ${env.BUILD_ID} --prefix nitinp9"
             }
         }       
         stage('Deploy') {
             steps{
-                //sh "sed -i '' 's/basicnodeapp:latest/basicnodeapp:${env.BUILD_ID}/g' deployment.yaml"
                 sh "kubectl apply -f platform/kube/bookinfo.yaml"
-                //step([$class: 'KubernetesEngineBuilder', clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'deployment.yaml', verifyDeployments: true])
             }
         }
     }    
