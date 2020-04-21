@@ -8,10 +8,10 @@ pipeline {
         }
         stage("Build and Publish") {
             steps {
-                sh "cd  samples/bookinfo"
-                sh "pwd"
-                sh "ls"
-                sh "./build_push_update_images.sh ${env.BUILD_ID} --prefix nitinp9"
+                //sh "cd  samples/bookinfo"
+                //sh "pwd"
+                //sh "ls"
+                sh "./samples/bookinfo/build_push_update_images.sh ${env.BUILD_ID} --prefix nitinp9"
             }
         }       
         stage('Deploy') {
