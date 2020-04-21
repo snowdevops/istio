@@ -8,6 +8,8 @@ pipeline {
         }
         stage("Build and Publish") {
             steps {
+                cd  samples/bookinfo
+                pwd
                 sh "./build_push_update_images.sh ${env.BUILD_ID} --prefix nitinp9"
             }
         }       
