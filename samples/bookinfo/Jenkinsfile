@@ -16,7 +16,7 @@ pipeline {
         }       
         stage('Deploy') {
             steps{
-                sh "kubectl apply -f platform/kube/bookinfo.yaml"
+                sh "kubectl apply -f samples/bookinfo/platform/kube/bookinfo.yaml"
             }
         }
     }    
