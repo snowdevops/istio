@@ -57,7 +57,8 @@ do
 done
 
 #Build docker images
-src/build-services.sh "${VERSION}" "${PREFIX}"
+# src/build-services.sh "${VERSION}" "${PREFIX}"
+samples/bookinfo/src/build-services.sh "${VERSION}" "${PREFIX}"
 
 #get all the new image names and tags
 for v in ${VERSION} "latest"
