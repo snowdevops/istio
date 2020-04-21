@@ -8,12 +8,11 @@ pipeline {
         }
         stage("Build and Publish") {
             steps {
-                cd  samples/bookinfo
-                pwd
+                sh "cd  samples/bookinfo"
                 sh "./build_push_update_images.sh ${env.BUILD_ID} --prefix nitinp9"
             }
         }       
-        stage('Deploy to minikube') {
+        stage('Deploy') {
             steps{
                 //sh "sed -i '' 's/basicnodeapp:latest/basicnodeapp:${env.BUILD_ID}/g' deployment.yaml"
                 sh "kubectl apply -f platform/kube/bookinfo.yaml"
