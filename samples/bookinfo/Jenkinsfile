@@ -1,0 +1,22 @@
+pipeline {
+    agent any
+    stages {
+        stage("Checkout code") {
+            steps {
+                checkout scm
+            }
+        }
+        stage("Build and Publish") {
+            steps {
+                sh "./build_push_update_images.sh ${env.BUILD_ID} --prefix nitinp9"
+            }
+        }       
+        stage('Deploy to minikube') {
+            steps{
+                //sh "sed -i '' 's/basicnodeapp:latest/basicnodeapp:${env.BUILD_ID}/g' deployment.yaml"
+                sh "kubectl apply -f platform/kube/bookinfo.yaml"
+                //step([$class: 'KubernetesEngineBuilder', clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'deployment.yaml', verifyDeployments: true])
+            }
+        }
+    }    
+}
