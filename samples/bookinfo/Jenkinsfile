@@ -11,6 +11,7 @@ pipeline {
             steps {
                 snDevOpsStep()
                 sh "./samples/bookinfo/build_push_update_images.sh ${env.BUILD_ID} --prefix=nitinp9"
+		snDevOpsArtifact(artifactsPayload: """{"artifacts": [{"name": "bookinfo", "version": "1.${env.BUILD_NUMBER}","semanticVersion": "1.${env.BUILD_NUMBER}.0","repositoryName": "np-dockerhub"}]}""")
             }
         }       
         stage('Deploy') {
