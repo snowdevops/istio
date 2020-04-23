@@ -24,7 +24,7 @@ One script to build the docker images, push them to docker hub and to update the
 build_push_update_images.sh <version>
 ```
 
-## Tests
+### Tests
 
 Bookinfo is tested by istio.io integration tests. You can find them under [tests/examples](https://github.com/istio/istio.io/tree/master/tests/examples) in the [istio/istio.io](https://github.com/istio/istio.io) repository.
 
