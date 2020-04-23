@@ -61,7 +61,7 @@ Istio is composed of these components:
 Istio currently supports Kubernetes and Consul-based environments. We plan support for additional platforms such as
 Cloud Foundry, and Mesos in the near future.
 
-## Repositories
+# Repositories
 
 The Istio project is divided across a few GitHub repositories.
 
