@@ -17,7 +17,8 @@ pipeline {
         stage('Deploy') {
             steps{
                 snDevOpsStep()
-				snDevOpsChange()
+		curl -d '{"name":"bookinfo-${env.BUILD_NUMBER}", "pipelineName" : "istio-bookinfo", "stageName":"Deploy"}' -H "Content-Type: application/json" -X POST https://tarundevopsorlando.service-now.com/api/now/cmdb/app_service/create_manual --user 'admin':'DevOps1!'
+		snDevOpsChange()
                 sh "kubectl apply -f samples/bookinfo/platform/kube/bookinfo.yaml"
             }
         }
